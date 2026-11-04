@@ -1,2 +1,2 @@
-# MY-Portfolio
+# my-portfolio
 My portfolio is welcome
