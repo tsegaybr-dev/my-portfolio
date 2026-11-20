@@ -1,18 +1,10 @@
-/* =====================================
-   1. SELECT HTML ELEMENTS
-===================================== */
+
 
 const themeBtn = document.getElementById("themeBtn");
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
 const contactForm = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
-
-
-/* =====================================
-   2. DARK MODE / LIGHT MODE
-===================================== */
-
 // Load saved theme
 function loadTheme() {
 
