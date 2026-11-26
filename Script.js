@@ -1,60 +1,65 @@
 
-
+// GET HTML ELEMENTS
 const themeBtn = document.getElementById("themeBtn");
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
-const contactForm = document.getElementById("contactForm");
-const formStatus = document.getElementById("formStatus");
-// Load saved theme
-function loadTheme() {
 
-    const savedTheme = localStorage.getItem("portfolioTheme");
+// ===============================
+// DARK AND LIGHT MODE
+// ===============================
 
-    if (savedTheme === "dark") {
-        document.body.classList.add("dark-mode");
-        themeBtn.textContent = "☀️";
-    } else {
-        document.body.classList.remove("dark-mode");
-        themeBtn.textContent = "🌙";
-    }
+// Load previously saved theme
+const savedTheme = localStorage.getItem("portfolioTheme");
+
+// Apply saved theme
+if (savedTheme === "dark") {
+    document.body.classList.add("dark-theme");
 }
 
-// Toggle theme
-themeBtn.addEventListener("click", function () {
-
-    document.body.classList.toggle("dark-mode");
-
-    const isDark = document.body.classList.contains("dark-mode");
+// Update theme button icon and accessibility label
+function updateThemeButton() {
+    const isDark = document.body.classList.contains("dark-theme");
 
     if (isDark) {
         themeBtn.textContent = "☀️";
         themeBtn.setAttribute("aria-label", "Switch to light mode");
-
-        localStorage.setItem("portfolioTheme", "dark");
-
+        themeBtn.title = "Switch to light mode";
     } else {
         themeBtn.textContent = "🌙";
         themeBtn.setAttribute("aria-label", "Switch to dark mode");
-
-        localStorage.setItem("portfolioTheme", "light");
+        themeBtn.title = "Switch to dark mode";
     }
+}
+
+// Set initial icon
+updateThemeButton();
+
+// Toggle dark and light mode
+themeBtn.addEventListener("click", function () {
+
+    document.body.classList.toggle("dark-theme");
+
+    const isDark = document.body.classList.contains("dark-theme");
+
+    // Save selected theme
+    localStorage.setItem(
+        "portfolioTheme",
+        isDark ? "dark" : "light"
+    );
+
+    updateThemeButton();
 
 });
 
-// Initialize theme
-loadTheme();
 
+// ===============================
+// MOBILE MENU
+// ===============================
 
-/* =====================================
-   3. MOBILE NAVIGATION MENU
-===================================== */
-
-// Open and close menu
+// Open and close mobile menu
 menuBtn.addEventListener("click", function () {
 
-    navLinks.classList.toggle("active");
-
-    const isOpen = navLinks.classList.contains("active");
+    const isOpen = navLinks.classList.toggle("open");
 
     menuBtn.textContent = isOpen ? "✕" : "☰";
 
@@ -67,15 +72,14 @@ menuBtn.addEventListener("click", function () {
 
 });
 
-
 // Close menu after clicking a navigation link
-const navigationItems = document.querySelectorAll(".nav-links a");
+const navItems = navLinks.querySelectorAll("a");
 
-navigationItems.forEach(function (link) {
+navItems.forEach(function (link) {
 
     link.addEventListener("click", function () {
 
-        navLinks.classList.remove("active");
+        navLinks.classList.remove("open");
 
         menuBtn.textContent = "☰";
 
@@ -87,181 +91,36 @@ navigationItems.forEach(function (link) {
 
 });
 
-
-// Close menu when clicking outside
-document.addEventListener("click", function (event) {
-
-    const clickedInsideMenu = navLinks.contains(event.target);
-    const clickedMenuButton = menuBtn.contains(event.target);
-
-    if (!clickedInsideMenu && !clickedMenuButton) {
-
-        navLinks.classList.remove("active");
-
-        menuBtn.textContent = "☰";
-
-        menuBtn.setAttribute("aria-expanded", "false");
-
-    }
-
-});
-
-
-// Close menu using Escape key
+// Close menu when Escape is pressed
 document.addEventListener("keydown", function (event) {
 
     if (event.key === "Escape") {
 
-        navLinks.classList.remove("active");
+        navLinks.classList.remove("open");
 
         menuBtn.textContent = "☰";
 
         menuBtn.setAttribute("aria-expanded", "false");
 
+        menuBtn.setAttribute("aria-label", "Open navigation menu");
+
     }
 
 });
 
-
-// Close mobile menu when returning to desktop size
+// Close mobile menu when resizing to desktop
 window.addEventListener("resize", function () {
 
     if (window.innerWidth > 768) {
 
-        navLinks.classList.remove("active");
+        navLinks.classList.remove("open");
 
         menuBtn.textContent = "☰";
 
         menuBtn.setAttribute("aria-expanded", "false");
 
+        menuBtn.setAttribute("aria-label", "Open navigation menu");
+
     }
 
 });
-
-
-/* =====================================
-   4. CONTACT FORM VALIDATION
-===================================== */
-
-contactForm.addEventListener("submit", function (event) {
-
-    event.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-
-    const email = document.getElementById("email").value.trim();
-
-    const message = document.getElementById("message").value.trim();
-
-
-    // Check empty fields
-    if (name === "" || email === "" || message === "") {
-
-        formStatus.textContent = "Please fill in all fields.";
-
-        return;
-
-    }
-
-
-    // Check email format
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailPattern.test(email)) {
-
-        formStatus.textContent = "Please enter a valid email address.";
-
-        return;
-
-    }
-
-
-    // Display confirmation
-    formStatus.textContent =
-        "Your message is valid! Connect a backend or email service to send it.";
-
-    // Clear form
-    contactForm.reset();
-
-});
-
-
-/* =====================================
-   5. UPDATE FOOTER YEAR
-===================================== */
-
-const footer = document.querySelector("footer");
-
-if (footer) {
-
-    const footerParagraph = footer.querySelector("p");
-
-    if (footerParagraph) {
-
-        footerParagraph.innerHTML =
-            `&copy; ${new Date().getFullYear()} Tsegay Brhane. All Rights Reserved.`;
-
-    }
-
-}
-
-
-/* =====================================
-   6. ACTIVE NAVIGATION LINK
-===================================== */
-
-const sections = document.querySelectorAll(
-    "section[id]"
-);
-
-const observerOptions = {
-    root: null,
-    threshold: 0.35
-};
-
-const sectionObserver = new IntersectionObserver(
-    function (entries) {
-
-        entries.forEach(function (entry) {
-
-            if (entry.isIntersecting) {
-
-                navigationItems.forEach(function (link) {
-
-                    link.classList.remove("current");
-
-                    if (
-                        link.getAttribute("href") ===
-                        "#" + entry.target.id
-                    ) {
-
-                        link.classList.add("current");
-
-                    }
-
-                });
-
-            }
-
-        });
-
-    },
-    observerOptions
-);
-
-
-// Observe all sections
-sections.forEach(function (section) {
-
-    sectionObserver.observe(section);
-
-});
-
-
-/* =====================================
-   7. WELCOME MESSAGE
-===================================== */
-
-console.log("Welcome to Tsegay Brhane's Portfolio!");
-
-console.log("JavaScript loaded successfully.");
