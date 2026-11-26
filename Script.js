@@ -8,119 +8,101 @@ const navLinks = document.getElementById("navLinks");
 // DARK AND LIGHT MODE
 // ===============================
 
-// Load previously saved theme
-const savedTheme = localStorage.getItem("portfolioTheme");
+let savedTheme = null;
 
-// Apply saved theme
+try {
+    savedTheme = localStorage.getItem("portfolioTheme");
+} catch (error) {
+    console.warn("Theme storage is unavailable.");
+}
+
 if (savedTheme === "dark") {
     document.body.classList.add("dark-theme");
 }
 
-// Update theme button icon and accessibility label
 function updateThemeButton() {
-    const isDark = document.body.classList.contains("dark-theme");
-
-    if (isDark) {
-        themeBtn.textContent = "☀️";
-        themeBtn.setAttribute("aria-label", "Switch to light mode");
-        themeBtn.title = "Switch to light mode";
-    } else {
-        themeBtn.textContent = "🌙";
-        themeBtn.setAttribute("aria-label", "Switch to dark mode");
-        themeBtn.title = "Switch to dark mode";
-    }
-}
-
-// Set initial icon
-updateThemeButton();
-
-// Toggle dark and light mode
-themeBtn.addEventListener("click", function () {
-
-    document.body.classList.toggle("dark-theme");
+    if (!themeBtn) return;
 
     const isDark = document.body.classList.contains("dark-theme");
 
-    // Save selected theme
-    localStorage.setItem(
-        "portfolioTheme",
-        isDark ? "dark" : "light"
+    themeBtn.textContent = isDark ? "☀️" : "🌙";
+
+    themeBtn.setAttribute(
+        "aria-label",
+        isDark ? "Switch to light mode" : "Switch to dark mode"
     );
 
-    updateThemeButton();
+    themeBtn.title = isDark
+        ? "Switch to light mode"
+        : "Switch to dark mode";
+}
 
-});
+updateThemeButton();
 
+if (themeBtn) {
+    themeBtn.addEventListener("click", function () {
+        document.body.classList.toggle("dark-theme");
+
+        const isDark = document.body.classList.contains("dark-theme");
+
+        try {
+            localStorage.setItem(
+                "portfolioTheme",
+                isDark ? "dark" : "light"
+            );
+        } catch (error) {
+            console.warn("Could not save theme preference.");
+        }
+
+        updateThemeButton();
+    });
+}
 
 // ===============================
 // MOBILE MENU
 // ===============================
 
-// Open and close mobile menu
-menuBtn.addEventListener("click", function () {
+function closeMobileMenu() {
+    if (!navLinks || !menuBtn) return;
 
-    const isOpen = navLinks.classList.toggle("open");
+    navLinks.classList.remove("open");
+    menuBtn.textContent = "☰";
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.setAttribute("aria-label", "Open navigation menu");
+}
 
-    menuBtn.textContent = isOpen ? "✕" : "☰";
+if (menuBtn && navLinks) {
+    menuBtn.addEventListener("click", function () {
+        const isOpen = navLinks.classList.toggle("open");
 
-    menuBtn.setAttribute("aria-expanded", isOpen);
+        menuBtn.textContent = isOpen ? "✕" : "☰";
 
-    menuBtn.setAttribute(
-        "aria-label",
-        isOpen ? "Close navigation menu" : "Open navigation menu"
-    );
+        menuBtn.setAttribute("aria-expanded", String(isOpen));
 
-});
-
-// Close menu after clicking a navigation link
-const navItems = navLinks.querySelectorAll("a");
-
-navItems.forEach(function (link) {
-
-    link.addEventListener("click", function () {
-
-        navLinks.classList.remove("open");
-
-        menuBtn.textContent = "☰";
-
-        menuBtn.setAttribute("aria-expanded", "false");
-
-        menuBtn.setAttribute("aria-label", "Open navigation menu");
-
+        menuBtn.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
     });
 
-});
+    // Close menu when a navigation link is clicked
+    const navItems = navLinks.querySelectorAll("a");
 
-// Close menu when Escape is pressed
-document.addEventListener("keydown", function (event) {
+    navItems.forEach(function (link) {
+        link.addEventListener("click", closeMobileMenu);
+    });
 
-    if (event.key === "Escape") {
+    // Close menu using Escape key
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            closeMobileMenu();
+        }
+    });
 
-        navLinks.classList.remove("open");
-
-        menuBtn.textContent = "☰";
-
-        menuBtn.setAttribute("aria-expanded", "false");
-
-        menuBtn.setAttribute("aria-label", "Open navigation menu");
-
-    }
-
-});
-
-// Close mobile menu when resizing to desktop
-window.addEventListener("resize", function () {
-
-    if (window.innerWidth > 768) {
-
-        navLinks.classList.remove("open");
-
-        menuBtn.textContent = "☰";
-
-        menuBtn.setAttribute("aria-expanded", "false");
-
-        menuBtn.setAttribute("aria-label", "Open navigation menu");
-
-    }
-
-});
+    // Close menu when switching to desktop size
+    window.addEventListener("resize", function () {
+        if (window.innerWidth > 768) {
+            closeMobileMenu();
+        }
+    });
+}
