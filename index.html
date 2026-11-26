@@ -1,44 +1,55 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="description" content="Tsegay Brhane - Software Engineering Student and Aspiring Software Developer">
+
     <title>Tsegay Brhane | Software Developer</title>
 
-   
+    <!-- CSS File -->
     <link rel="stylesheet" href="style.css">
 
-  
+    <!-- JavaScript File -->
     <script src="script.js" defer></script>
 </head>
 
 <body>
 
-   
+    <!-- Header and Navigation -->
     <header>
         <nav class="navbar">
+
             <h2 class="logo">Tsegay<span>.</span></h2>
 
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
 
             <div class="nav-buttons">
-                <button id="themeBtn" aria-label="Toggle theme">🌍</button>
-                <button id="menuBtn" aria-label="Open menu">☰</button>
+                <button type="button" id="themeBtn"
+                    aria-label="Toggle theme">🌙</button>
+
+                <button type="button" id="menuBtn"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false">☰</button>
             </div>
+
         </nav>
     </header>
 
-   
+    <!-- Home Section -->
     <section class="hero" id="home">
 
         <div class="hero-content">
+
             <p class="welcome">WELCOME TO MY PORTFOLIO</p>
 
             <h1>Hello, I'm <span>Tsegay Brhane</span></h1>
@@ -46,137 +57,214 @@
             <h2>Software Engineering Student</h2>
 
             <p>
-                I am a third-year Software Engineering student <br>
-                passionate about programming, web development
+                I am a third-year Software Engineering student
+                passionate about programming, web development,
                 and solving real-world problems through technology.
             </p>
 
             <div class="hero-buttons">
-                <a href="#projects" class="btn">View My Projects</a>
-                <a href="#contact" class="btn secondary">Contact Me</a>
+                <a href="#projects" class="btn">
+                    View My Projects
+                </a>
+
+                <a href="#contact" class="btn secondary">
+                    Contact Me
+                </a>
             </div>
+
         </div>
 
         <div class="profile">
-            <div class="profile-circle"><img class="tsegay" src="tsegay 1.jpg" width="300px" height="300px" style="border-radius:50px" ></div>
+            <div class="profile-circle">
+                <img
+                    class="tsegay"
+                    src="tsegay 1.jpg"
+                    alt="Portrait of Tsegay Brhane"
+                    width="300"
+                    height="300"
+                >
+            </div>
         </div>
 
     </section>
 
- 
+    <!-- About Section -->
     <section id="about" class="section">
+
         <h2>About <span>Me</span></h2>
 
         <div class="about-content">
+
             <p>
                 My name is Tsegay Brhane. I am a third-year
                 Software Engineering student.
 
                 I am interested in software development,
-                web technologies, algorithms, <br> databases,
-                networking and modern technology.
+                web technologies, algorithms, databases,
+                networking, and modern technology.
 
                 My ambition is to become a professional
                 software developer and build innovative
-                solutions that make a difference. At this world is changed to digital system so we have to update our task.
+                solutions that make a difference.
+
+                As the world continues to move toward digital
+                systems, I believe technology plays an important
+                role in improving our daily lives and work.
             </p>
+
         </div>
+
     </section>
 
+    <!-- Education Section -->
     <section class="section education" id="education">
+
         <h2>My <span>Education</span></h2>
 
         <div class="card">
+
             <h3>Software Engineering</h3>
-            <p>Third Year University Student</p>
-            <p>Developing knowledge in programming and software engineering.</p>
+
+            <p>Third-Year University Student</p>
+
+            <p>
+                Developing knowledge in programming,
+                web development, databases, algorithms,
+                and software engineering.
+            </p>
+
         </div>
+
     </section>
 
-  
+    <!-- Skills Section -->
     <section class="section" id="skills">
+
         <h2>My Technical <span>Skills</span></h2>
 
         <div class="cards">
 
             <div class="card">
                 <h3>HTML</h3>
-                <p>Website structure</p>
+                <p>Website structure and content.</p>
             </div>
 
             <div class="card">
                 <h3>CSS</h3>
-                <p>Website design</p>
+                <p>Website styling and responsive design.</p>
             </div>
 
             <div class="card">
                 <h3>JavaScript</h3>
-                <p>Interactive websites</p>
+                <p>Interactive website development.</p>
             </div>
 
             <div class="card">
                 <h3>C++</h3>
-                <p>Programming and algorithms</p>
+                <p>Programming and algorithms.</p>
             </div>
 
             <div class="card">
                 <h3>Java</h3>
-                <p>Application development</p>
+                <p>Object-oriented programming.</p>
             </div>
 
             <div class="card">
                 <h3>Git & GitHub</h3>
-                <p>Version control</p>
+                <p>Version control and collaboration.</p>
             </div>
 
         </div>
+
     </section>
 
-  
+    <!-- Projects Section -->
     <section class="section" id="projects">
+
         <h2>My <span>Projects</span></h2>
 
         <div class="cards">
 
             <div class="card project">
+
                 <h3>Personal Portfolio</h3>
-                <p>A personal website built with HTML and CSS.</p>
+
+                <p>
+                    A personal website created to showcase
+                    my skills, education, and projects.
+                </p>
+
                 <span>HTML | CSS | JavaScript</span>
+
             </div>
 
             <div class="card project">
+
                 <h3>Student Registration</h3>
-                <p>A student registration form project.</p>
+
+                <p>
+                    A student registration form project
+                    designed to collect student information.
+                </p>
+
                 <span>HTML | CSS</span>
+
             </div>
 
             <div class="card project">
+
                 <h3>Programming Practice</h3>
-                <p>Algorithms and data structures using C++ or c .</p>
+
+                <p>
+                    Practicing algorithms and data structures
+                    using C++.
+                </p>
+
                 <span>C++ | Algorithms</span>
+
             </div>
 
         </div>
+
     </section>
 
-   
+    <!-- Contact Section -->
     <section class="section contact" id="contact">
 
         <h2>Contact <span>Me</span></h2>
 
-        <p>Have a project or opportunity? Let's connect.</p>
+        <p>
+            Have a project or opportunity?
+            Let's connect!
+        </p>
 
         <form id="contactForm">
 
-            <input type="text" id="name"
-                   placeholder="Your Name" required>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your Name"
+                autocomplete="name"
+                required
+            >
 
-            <input type="email" id="email"
-                   placeholder="Your Email" required>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Your Email"
+                autocomplete="email"
+                required
+            >
 
-            <textarea id="message"
-                      placeholder="Your Message"
-                      required></textarea>
+            <textarea
+                id="message"
+                name="message"
+                placeholder="Your Message"
+                rows="5"
+                required
+            ></textarea>
 
             <button type="submit" class="btn">
                 Send Message
@@ -184,19 +272,34 @@
 
         </form>
 
-        <p id="formStatus"></p>
+        <p id="formStatus" role="status" aria-live="polite"></p>
 
+        <!-- Social Media -->
         <div class="social">
-            <a href="https://github.com/YOUR-USERNAME"
-               target="_blank">GitHub</a>
+
+            <a
+                href="https://github.com/YOUR-USERNAME"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                GitHub
+            </a>
+
         </div>
 
     </section>
 
-    
+    <!-- Footer -->
     <footer>
-        <p>© 2026 Tsegay Brhane. All Rights Reserved.</p>
-        <p>Designed and Developed by Tsegay Brhane.</p>
+
+        <p>
+            &copy; 2026 Tsegay Brhane. All Rights Reserved.
+        </p>
+
+        <p>
+            Designed and Developed by Tsegay Brhane.
+        </p>
+
     </footer>
 
 </body>
