@@ -10,14 +10,15 @@
 :root {
     --bg: #f5f7fb;
     --surface: #ffffff;
-    --text: #222;
-    --muted: #555;
+    --text: #222222;
+    --muted: #555555;
     --primary: #007bff;
     --header: #ffffff;
     --border: #dddddd;
     --shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 }
 
+/* DARK MODE */
 body.dark-theme {
     --bg: #101827;
     --surface: #1c293b;
@@ -54,6 +55,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .logo {
@@ -77,7 +79,7 @@ header {
     color: var(--text);
     text-decoration: none;
     font-weight: bold;
-    transition: 0.3s;
+    transition: color 0.3s;
 }
 
 .nav-links a:hover {
@@ -105,7 +107,7 @@ header {
     opacity: 0.8;
 }
 
-/* Hide mobile menu button on desktop */
+/* DESKTOP MENU BUTTON */
 #menuBtn {
     display: none;
 }
@@ -193,6 +195,7 @@ header {
     overflow: hidden;
     border: 5px solid var(--primary);
     box-shadow: var(--shadow);
+    flex-shrink: 0;
 }
 
 .tsegay {
@@ -201,7 +204,6 @@ header {
     display: block;
     object-fit: cover;
     object-position: center;
-    border-radius: 50%;
 }
 
 /* SECTIONS */
@@ -236,7 +238,7 @@ header {
     border-radius: 12px;
     box-shadow: var(--shadow);
     border: 1px solid var(--border);
-    transition: transform 0.3s;
+    transition: transform 0.3s, background 0.3s;
 }
 
 .card:hover {
@@ -327,19 +329,16 @@ footer {
 
     .navbar {
         padding: 12px 18px;
-        flex-wrap: wrap;
     }
 
-    /* Show hamburger button */
     #menuBtn {
         display: block;
     }
 
-    /* Mobile navigation menu */
     .nav-links {
         display: none;
         position: absolute;
-        top: 75px;
+        top: 100%;
         left: 0;
         width: 100%;
         background: var(--header);
@@ -351,7 +350,6 @@ footer {
         border-top: 1px solid var(--border);
     }
 
-    /* Show menu when JavaScript adds open class */
     .nav-links.open {
         display: flex;
     }
