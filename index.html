@@ -5,20 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Tsegay Brhane - Software Engineering Student and Aspiring Software Developer">
+    <meta name="description" content="Tsegay Brhane - Software Engineering Student">
 
     <title>Tsegay Brhane | Software Developer</title>
 
-    <!-- CSS File -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- JavaScript File -->
     <script src="script.js" defer></script>
 </head>
 
 <body>
 
-    <!-- Header and Navigation -->
+    <!-- Navigation -->
     <header>
         <nav class="navbar">
 
@@ -34,12 +31,20 @@
             </ul>
 
             <div class="nav-buttons">
+
                 <button type="button" id="themeBtn"
-                    aria-label="Toggle theme">🌙</button>
+                    aria-label="Switch to dark mode"
+                    title="Toggle dark mode">
+                    🌙
+                </button>
 
                 <button type="button" id="menuBtn"
                     aria-label="Open navigation menu"
-                    aria-expanded="false">☰</button>
+                    aria-expanded="false"
+                    aria-controls="navLinks">
+                    ☰
+                </button>
+
             </div>
 
         </nav>
@@ -63,26 +68,21 @@
             </p>
 
             <div class="hero-buttons">
-                <a href="#projects" class="btn">
-                    View My Projects
-                </a>
-
-                <a href="#contact" class="btn secondary">
-                    Contact Me
-                </a>
+                <a href="#projects" class="btn">View My Projects</a>
+                <a href="#contact" class="btn secondary">Contact Me</a>
             </div>
 
         </div>
 
-      <div class="profile">
-    <div class="profile-circle">
-        <img
-            class="tsegay"
-            src="tsegay 1.jpg"
-            alt="Tsegay Brhane"
-        >
-    </div>
-</div>
+        <div class="profile">
+            <div class="profile-circle">
+                <img
+                    class="tsegay"
+                    src="tsegay 1.jpg"
+                    alt="Tsegay Brhane"
+                >
+            </div>
+        </div>
 
     </section>
 
@@ -92,7 +92,6 @@
         <h2>About <span>Me</span></h2>
 
         <div class="about-content">
-
             <p>
                 My name is Tsegay Brhane. I am a third-year
                 Software Engineering student.
@@ -109,7 +108,6 @@
                 systems, I believe technology plays an important
                 role in improving our daily lives and work.
             </p>
-
         </div>
 
     </section>
@@ -120,17 +118,13 @@
         <h2>My <span>Education</span></h2>
 
         <div class="card">
-
             <h3>Software Engineering</h3>
-
             <p>Third-Year University Student</p>
-
             <p>
                 Developing knowledge in programming,
                 web development, databases, algorithms,
                 and software engineering.
             </p>
-
         </div>
 
     </section>
@@ -184,42 +178,30 @@
         <div class="cards">
 
             <div class="card project">
-
                 <h3>Personal Portfolio</h3>
-
                 <p>
                     A personal website created to showcase
                     my skills, education, and projects.
                 </p>
-
                 <span>HTML | CSS | JavaScript</span>
-
             </div>
 
             <div class="card project">
-
                 <h3>Student Registration</h3>
-
                 <p>
                     A student registration form project
                     designed to collect student information.
                 </p>
-
                 <span>HTML | CSS</span>
-
             </div>
 
             <div class="card project">
-
                 <h3>Programming Practice</h3>
-
                 <p>
                     Practicing algorithms and data structures
                     using C++.
                 </p>
-
                 <span>C++ | Algorithms</span>
-
             </div>
 
         </div>
@@ -231,10 +213,7 @@
 
         <h2>Contact <span>Me</span></h2>
 
-        <p>
-            Have a project or opportunity?
-            Let's connect!
-        </p>
+        <p>Have a project or opportunity? Let's connect!</p>
 
         <form id="contactForm">
 
@@ -272,9 +251,7 @@
 
         <p id="formStatus" role="status" aria-live="polite"></p>
 
-        <!-- Social Media -->
         <div class="social">
-
             <a
                 href="https://github.com/YOUR-USERNAME"
                 target="_blank"
@@ -282,22 +259,14 @@
             >
                 GitHub
             </a>
-
         </div>
 
     </section>
 
     <!-- Footer -->
     <footer>
-
-        <p>
-            &copy; 2026 Tsegay Brhane. All Rights Reserved.
-        </p>
-
-        <p>
-            Designed and Developed by Tsegay Brhane.
-        </p>
-
+        <p>&copy; 2026 Tsegay Brhane. All Rights Reserved.</p>
+        <p>Designed and Developed by Tsegay Brhane.</p>
     </footer>
 
 </body>
